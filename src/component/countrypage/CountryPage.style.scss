@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  box-shadow: 1px 2px 2px rgb(231, 226, 226);
+
+  .mode {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+.search{
+    display: flex;
+    margin: 50px 50px;
+   
+    
+    
+
+    .search-box{
+        padding: 20px 20px;
+        border-style: none;
+        font-size: large;
+        box-shadow: 1px 2px 2px rgb(231, 226, 226);
+        border-radius: 5px;
+        width: 400px;
+        height: 50px;
+
+        
+
+
+    }
+}
+
+.search-filter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 100px;
+    
+}
+.filter{
+    
+ #filter-country{
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: small;
+    box-shadow:2px 2px 2px rgb(231, 226, 226); 
+
+    
+    
+ }
+}
+
+.country-cards{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 50px;
+    padding: 1cap;
+}
+.country-card{
+    box-shadow: 2px 2px 2px rgb(231, 226, 226);
+    border-radius: 5px;
+    height: 400px;
+
+
+    h2{
+        margin: 20px 20px;
+    }
+    img{
+        width: 300px;
+        height: 200px;
+    }
+    p{
+        padding: 5px;
+        
+    }
+}

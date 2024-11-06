@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import CountryPage from './component/countrypage/CountryPage.component';
+const App = () => {
 
-function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() =>{
+    const fetchData = async () =>{
+      try{
+        const response = await fetch('https://restcountries.com/v3.1/all')
+        const result = await response.json()
+        console.log(result)
+        setData(result)
+      }catch(error){
+        console.log('error in api fetch',error)
+      }
+    } 
+    fetchData()
+  },[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div className='App'>
+    <CountryPage data = {data} />
+   </div>
   );
 }
 
