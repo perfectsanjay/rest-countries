@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faMoon,faSun } from "@fortawesome/free-solid-svg-icons";
 import "./CountryPage.style.scss";
 const CountryPage = ({ data }) => {
   const [selectedRegion, setSelectedRegion] = useState("All");
   const [searchVal, setSearchVal] = useState('')
+  const [isDarkMode, setDarkMode] = useState(() =>{
+    const savedMode = localStorage.getItem('darkMode')
+    return savedMode ? JSON.parse(savedMode) : false ;
+  })
 
   const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
@@ -24,16 +28,23 @@ const CountryPage = ({ data }) => {
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
   };
+  const handleToggleMode = () =>{
+    setDarkMode(prevMode => {
+        const newMode = !prevMode;
+        localStorage.setItem("darkMode",JSON.stringify(newMode))
+        return newMode
+    })
+  }
 
   return (
-    <div className="container">
+    <div className={`container ${isDarkMode?"dark-mode": "light-mode"}`}>
       <nav className="nav-bar">
         <div className="logo">
           <h1 className="brand-name">Where in the World?</h1>
         </div>
-        <div className="mode">
-          <FontAwesomeIcon icon={faMoon} />
-          <p>Dark Mode</p>
+        <div className='mode' onClick={handleToggleMode}>
+          <FontAwesomeIcon icon={isDarkMode? faMoon: faSun} />
+          <button className={`button ${isDarkMode?"dark-mode":"light-mode"}`}>{isDarkMode?"Light Mode": "Dark Mode"}</button>
         </div>
       </nav>
       <div className="search-filter">
